@@ -12,6 +12,7 @@ import {
   SafeAreaView,
   ScrollView,
   StatusBar,
+  Text,
   useColorScheme,
   View,
 } from 'react-native';
@@ -68,7 +69,7 @@ function App(): React.JSX.Element {
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }} />
+          }} ><Text>Integration with Woosmap Geofence SDK and native Events</Text></View>
       </ScrollView>
     </SafeAreaView>
   );
