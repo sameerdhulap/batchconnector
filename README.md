@@ -46,34 +46,67 @@ If everything is set up _correctly_, you should see your new app running in your
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
+## Step 3: Integration
+### For iOS
+For Native implementaion of events You have to create new swift file `GeofencingEventsReceiver.swift` in iOS folder and add it your workspace
+``` swift
+import Foundation
+import WoosmapGeofencing
+import react_native_plugin_geofencing
 
-Now that you have successfully run the app, let's modify it.
+extension Notification.Name {
+  static let updateRegions = Notification.Name("updateRegions")
+  static let didEventPOIRegion = Notification.Name("didEventPOIRegion")
+}
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+@objc(GeofencingEventsReceiver)
+class GeofencingEventsReceiver: NSObject {
+  @objc public func startReceivingEvent() {
+    NotificationCenter.default.addObserver(self, selector: #selector(POIRegionReceivedNotification),
+                                           name: .didEventPOIRegion,
+                                           object: nil)
+  }
+  @objc func POIRegionReceivedNotification(notification: Notification) {
+    if let POIregion = notification.userInfo?["Region"] as? Region{
+      // YOUR CODE HERE
+      if POIregion.didEnter {
+        NSLog("didEnter")
+      }
+      else{
+        NSLog("didExit")
+      }
+      // Add Your Batch intergation here
+    }
+  }
+  // Stop receiving notification
+  @objc public func stopReceivingEvent() {
+    NotificationCenter.default.removeObserver(self, name: .didEventPOIRegion, object: nil)
+  }
+  
+}
+```
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+Also Update `AppDelegate.mm` as following
 
-## Congratulations! :tada:
+``` objective-c
 
-You've successfully run and modified your React Native App. :partying_face:
+GeofencingEventsReceiver * objWoosmapReceiver;
 
-### Now what?
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  self.moduleName = @"MarketingConnector";
+  // You can add your custom initial props in the dictionary below.
+  // They will be passed down to the ViewController used by React Native.
+  self.initialProps = @{};
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+  objWoosmapReceiver = [GeofencingEventsReceiver new];
+  [objWoosmapReceiver startReceivingEvent];
+  
+  
+  ....
+  ....
+  ....
+  
+  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+```
