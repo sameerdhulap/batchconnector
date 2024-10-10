@@ -1,6 +1,7 @@
 {
     "cSpell.words": [
-        "Geofence"
+        "Geofence",
+        "marketingconnector"
     ],
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.compile.nullAnalysis.mode": "automatic"

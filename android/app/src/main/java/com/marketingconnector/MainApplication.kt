@@ -41,8 +41,6 @@ class MainApplication : Application(), ReactApplication {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       load()
     }
-
-
       // Register the receiver with the filter
       geofencingEventsReceiver = GeofencingEventsReceiver()
       val filter = IntentFilter("com.woosmap.action.GEOFENCE_TRIGGERED")
