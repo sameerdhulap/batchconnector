@@ -46,6 +46,6 @@ class MainApplication : Application(), ReactApplication {
       // Register the receiver with the filter
       geofencingEventsReceiver = GeofencingEventsReceiver()
       val filter = IntentFilter("com.woosmap.action.GEOFENCE_TRIGGERED")
-      registerReceiver(geofencingEventsReceiver, filter, RECEIVER_NOT_EXPORTED)
+      registerReceiver(geofencingEventsReceiver, filter, RECEIVER_EXPORTED)
   }
 }

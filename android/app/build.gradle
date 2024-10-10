@@ -116,6 +116,8 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    implementation "androidx.room:room-runtime:2.+"
+    implementation 'com.batch.android:batch-sdk:2.0+'
     implementation "com.github.woosmap:geofencing-core-android-sdk:core_geofence_2.+"
     implementation "com.webgeoservices.woosmapgeofencing:woosmap-mobile-sdk:4.+"
 }
