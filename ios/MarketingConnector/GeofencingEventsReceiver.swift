@@ -26,11 +26,27 @@ class GeofencingEventsReceiver: NSObject {
       // YOUR CODE HERE
       if POIregion.didEnter {
         NSLog("didEnter")
+        
+        // if you want only push to batch geofence event related to POI,
+        // check first if the POIregion.origin is equal to "POI"
+        if POIregion.origin == "POI"
+        {
+          if let POI = POIs.getPOIbyIdStore(idstore: POIregion.identifier) as POI? {
+            
+            // Event with custom attributes
+            //                        BatchProfile.trackEvent(name: "woos_geofence_entered_event", attributes: BatchEventAttributes { data in
+            //                          // Custom attribute
+            //                          data.put(POI.idstore ?? "", forKey: "identifier")
+            //                          // Compatibility reserved key
+            //                          data.put(POI.name ?? "", forKey: "name")
+            //                        })
+          }
+          else {
+            // error: Related POI doesn't exist
+          }
+        }
       }
-      else{
-        NSLog("didExit")
-      }
-      executeNotification(region: POIregion )
+      //executeNotification(region: POIregion )
     }
   }
   // Stop receiving notification

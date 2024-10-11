@@ -5,8 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.batch.android.Batch;
-import com.batch.android.BatchEventAttributes;
+//import com.batch.android.Batch;
+//import com.batch.android.BatchEventAttributes;
 import com.webgeoservices.woosmapgeofencingcore.database.POI;
 import com.webgeoservices.woosmapgeofencingcore.database.WoosmapDb;
 
@@ -20,7 +20,6 @@ public class GeofencingEventsReceiver extends BroadcastReceiver {
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "Received broadcast");
         executorService.execute(() -> {
             try{
                 // Get region data from the intent
@@ -29,12 +28,12 @@ public class GeofencingEventsReceiver extends BroadcastReceiver {
                 POI poi;
                 poi = WoosmapDb.getInstance(context).getPOIsDAO().getPOIbyStoreId(regionData.getString("identifier"));
                 if (poi != null){ //poi could be null if the entered/exited region is a custom region.
-
-                    // Event with custom attributes
-                    BatchEventAttributes attributes = new BatchEventAttributes()
-                            .put("identifier", poi.idStore)
-                            .put("name", poi.name);
-                    Batch.Profile.trackEvent(regionData.getString("eventname"), attributes);
+//                    Add Your implementation here
+//                    Event with custom attributes
+//                    BatchEventAttributes attributes = new BatchEventAttributes()
+//                            .put("identifier", poi.idStore)
+//                            .put("name", poi.name);
+//                    Batch.Profile.trackEvent(regionData.getString("eventname"), attributes);
                 }
             }
             catch (Exception ex){
