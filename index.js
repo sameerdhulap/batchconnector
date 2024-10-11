@@ -9,19 +9,6 @@ import WoosmapGeofencing from '@woosmap/react-native-plugin-geofencing';
 
 AppRegistry.registerComponent(appName, () => App);
 
-function activateWoosmapGeofenceSDK(params) {
-  // var woosmapSettings = {
-  //   privateKeyWoosmapAPI: Platform.OS === 'ios' ? '653ce5d0-7019-48bc-a0d9-4353d5999a89' : '157c16cd-fc0e-46d9-8c40-f80953a9cbf7',
-  //   trackingProfile: 'passiveTracking',
-  // };
-  // WoosmapGeofencing.initialize(woosmapSettings)
-  //                 .then((value) => {
-  //                   console.log(value);
-  //                 })
-  //                 .catch((error) => {
-  //                   console.log('message: ' + error.message);
-  //                 });
-}
 
 function checkPermissionStatus(){
   if(Platform.OS === 'ios'){
@@ -40,40 +27,20 @@ function checkLocationPermission(){
     if (status === 'UNKNOWN'){
       //Ask permission
       if (Platform.OS === 'ios'){
-        WoosmapGeofencing.requestPermissions(true)
-        .then((permissionStatus) => {
-          activateWoosmapGeofenceSDK();
-        })
-        .catch((error) => {
-          console.log('message: ' + error.message);
-        });
+        WoosmapGeofencing.requestPermissions(true);
       }
       else {
         if (status === 'GRANTED_FOREGROUND'){
-          WoosmapGeofencing.requestPermissions(true).then((permissionStatus) => {
-            activateWoosmapGeofenceSDK();
-          })
-          .catch((error) => {
-            console.log('message: ' + error.message);
-          });
+          WoosmapGeofencing.requestPermissions(true);
         }
         else{
           WoosmapGeofencing.requestPermissions(false).then((permissionStatus) => {
             if (permissionStatus === 'GRANTED_FOREGROUND'){
-              WoosmapGeofencing.requestPermissions(true).then((backgroundPermissionStatus) => {
-                console.log('background permission ' + backgroundPermissionStatus);
-                activateWoosmapGeofenceSDK();
-              })
-              .catch((error) => {
-                console.log('message: ' + error.message);
-              });
+              WoosmapGeofencing.requestPermissions(true);
             }
           });
         }
       }
-    }
-    else{
-      activateWoosmapGeofenceSDK();
     }
     })
     .catch((error) => {
