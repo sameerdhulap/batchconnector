@@ -48,13 +48,17 @@ This is one way to run your app — you can also run it directly from within And
 
 ## Step 3: Integration
 
+### Batch Integration
+
+Follow the [Batch Implementation](https://doc.batch.com/react-native/sdk-integration/) guide in order to add Batch plugin to your project.
+
 ### Receiving Woosmap Geofencing Region events using iOS Notification
 
-For Native implementation of events You have to create new swift file `GeofencingEventsReceiver.swift` in iOS folder and add it your workspace
+Follow the steps below in order to capture events of geofence SDK
 
 1. Add a new swift class file GeofencingEventsReceiver.swift and in iOS folder and add it your iOS workspace with following code in it. 
 
-``` swift, GeofencingEventsReceiver.swift
+``` swift
 import Foundation
 import WoosmapGeofencing
 import react_native_plugin_geofencing
