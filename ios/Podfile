@@ -10,7 +10,7 @@ prepare_react_native_project!
 
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
-  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks and #{linkage.to_sym}".green
   use_frameworks! :linkage => linkage.to_sym
 end
 
@@ -19,6 +19,7 @@ target 'MarketingConnector' do
 
   use_react_native!(
     :path => config[:reactNativePath],
+    :hermes_enabled => false,
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )

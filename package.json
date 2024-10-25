@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@braze/react-native-sdk": "^13.1.0",
     "@woosmap/react-native-plugin-geofencing": "^0.5.1",
     "react": "18.3.1",
     "react-native": "0.75.4"

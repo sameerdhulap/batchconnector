@@ -8,6 +8,7 @@
 import Foundation
 import WoosmapGeofencing
 import react_native_plugin_geofencing
+import BrazeKit
 
 extension Notification.Name {
   static let updateRegions = Notification.Name("updateRegions")
@@ -34,12 +35,13 @@ class GeofencingEventsReceiver: NSObject {
           if let POI = POIs.getPOIbyIdStore(idstore: POIregion.identifier) as POI? {
             
             // Event with custom attributes
-            //                        BatchProfile.trackEvent(name: "woos_geofence_entered_event", attributes: BatchEventAttributes { data in
-            //                          // Custom attribute
-            //                          data.put(POI.idstore ?? "", forKey: "identifier")
-            //                          // Compatibility reserved key
-            //                          data.put(POI.name ?? "", forKey: "name")
-            //                        })
+            AppDelegate.braze?.logCustomEvent(
+                          name: "woos_geofence_entered_event",
+                          properties: [
+                            "identifier": POI.idstore!,
+                            "name": POI.name!
+                          ]
+                        )
           }
           else {
             // error: Related POI doesn't exist

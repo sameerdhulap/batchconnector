@@ -4,7 +4,22 @@
 #import "MarketingConnector-Swift.h"
 #import <UserNotifications/UserNotifications.h>
 
+
 @implementation AppDelegate
+
+#pragma mark - AppDelegate.braze
+
+static Braze *_braze = nil;
+
++ (Braze *)braze {
+  return _braze;
+}
+
++ (void)setBraze:(Braze *)braze {
+  _braze = braze;
+}
+
+#pragma mark - AppDelegate
 
 GeofencingEventsReceiver * objWoosmapReceiver;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -13,7 +28,16 @@ GeofencingEventsReceiver * objWoosmapReceiver;
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
   self.initialProps = @{};
-
+  
+  // Setup Braze
+  BRZConfiguration *configuration = [[BRZConfiguration alloc] initWithApiKey:@"{BRAZE_API_KEY}"
+                                                                      endpoint:@"{BRAZE_ENDPOINT}"];
+  // Enable logging and customize the configuration here.
+  configuration.logger.level = BRZLoggerLevelInfo;
+  Braze *braze = [BrazeReactBridge initBraze:configuration];
+  AppDelegate.braze = braze;
+  
+  // Setup Woosmap geofence
   objWoosmapReceiver = [GeofencingEventsReceiver new];
   [objWoosmapReceiver startReceivingEvent];
   

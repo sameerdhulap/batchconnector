@@ -12,10 +12,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		5F2CBB602CB506CD00B6A09B /* GeofencingEventsReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F2CBB5F2CB506CD00B6A09B /* GeofencingEventsReceiver.swift */; };
-		6ACD6F14575FDA071171A82C /* Pods_MarketingConnector_MarketingConnectorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7A406EBF0F45183768AC88B /* Pods_MarketingConnector_MarketingConnectorTests.framework */; };
+		6CB3E0520A5DD28CFF761160 /* libPods-MarketingConnector-MarketingConnectorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E825B5695E8FE89DF6994862 /* libPods-MarketingConnector-MarketingConnectorTests.a */; };
 		7EDEC99364F5DE5FDFFABACF /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = EDEDA6D3625CAF273D14E076 /* PrivacyInfo.xcprivacy */; };
-		7F33E09E787FBB56B7FDD8BD /* Pods_MarketingConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DDD5C62BD9F1388DFC28836 /* Pods_MarketingConnector.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8D0F2C5BF8753D08ED91920F /* libPods-MarketingConnector.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43509A5575FBD773EE3E2369 /* libPods-MarketingConnector.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,16 +40,16 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MarketingConnector/main.m; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = MarketingConnector/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-MarketingConnector.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketingConnector.debug.xcconfig"; path = "Target Support Files/Pods-MarketingConnector/Pods-MarketingConnector.debug.xcconfig"; sourceTree = "<group>"; };
+		43509A5575FBD773EE3E2369 /* libPods-MarketingConnector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MarketingConnector.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5709B34CF0A7D63546082F79 /* Pods-MarketingConnector.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketingConnector.release.xcconfig"; path = "Target Support Files/Pods-MarketingConnector/Pods-MarketingConnector.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-MarketingConnector-MarketingConnectorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketingConnector-MarketingConnectorTests.debug.xcconfig"; path = "Target Support Files/Pods-MarketingConnector-MarketingConnectorTests/Pods-MarketingConnector-MarketingConnectorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F2CBB5E2CB506CC00B6A09B /* MarketingConnector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarketingConnector-Bridging-Header.h"; sourceTree = "<group>"; };
 		5F2CBB5F2CB506CD00B6A09B /* GeofencingEventsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeofencingEventsReceiver.swift; path = MarketingConnector/GeofencingEventsReceiver.swift; sourceTree = "<group>"; };
-		6DDD5C62BD9F1388DFC28836 /* Pods_MarketingConnector.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketingConnector.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MarketingConnector/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-MarketingConnector-MarketingConnectorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarketingConnector-MarketingConnectorTests.release.xcconfig"; path = "Target Support Files/Pods-MarketingConnector-MarketingConnectorTests/Pods-MarketingConnector-MarketingConnectorTests.release.xcconfig"; sourceTree = "<group>"; };
+		E825B5695E8FE89DF6994862 /* libPods-MarketingConnector-MarketingConnectorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MarketingConnector-MarketingConnectorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		EDEDA6D3625CAF273D14E076 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = MarketingConnector/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		F7A406EBF0F45183768AC88B /* Pods_MarketingConnector_MarketingConnectorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarketingConnector_MarketingConnectorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ACD6F14575FDA071171A82C /* Pods_MarketingConnector_MarketingConnectorTests.framework in Frameworks */,
+				6CB3E0520A5DD28CFF761160 /* libPods-MarketingConnector-MarketingConnectorTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F33E09E787FBB56B7FDD8BD /* Pods_MarketingConnector.framework in Frameworks */,
+				8D0F2C5BF8753D08ED91920F /* libPods-MarketingConnector.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				6DDD5C62BD9F1388DFC28836 /* Pods_MarketingConnector.framework */,
-				F7A406EBF0F45183768AC88B /* Pods_MarketingConnector_MarketingConnectorTests.framework */,
+				43509A5575FBD773EE3E2369 /* libPods-MarketingConnector.a */,
+				E825B5695E8FE89DF6994862 /* libPods-MarketingConnector-MarketingConnectorTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -618,7 +618,7 @@
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
-				USE_HERMES = true;
+				USE_HERMES = false;
 			};
 			name = Debug;
 		};
@@ -703,7 +703,7 @@
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
-				USE_HERMES = true;
+				USE_HERMES = false;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
