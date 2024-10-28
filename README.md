@@ -215,10 +215,14 @@ import android.util.Log;
 import com.webgeoservices.woosmapgeofencingcore.database.POI;
 import com.webgeoservices.woosmapgeofencingcore.database.WoosmapDb;
 
+import com.braze.Braze;
+import com.braze.models.outgoing.BrazeProperties;
+
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 
 public class GeofencingEventsReceiver extends BroadcastReceiver {
     private static final String TAG = "GeofencingReceiver";
@@ -234,13 +238,11 @@ public class GeofencingEventsReceiver extends BroadcastReceiver {
                 poi = WoosmapDb.getInstance(context).getPOIsDAO().getPOIbyStoreId(regionData.getString("identifier"));
                 if (poi != null){ //poi could be null if the entered/exited region is a custom region.
                       // Add Your implementation here
-                      AppDelegate.braze?.logCustomEvent(
-                          name: "woos_geofence_entered_event",
-                          properties: [
-                            "identifier": POI.idstore!,
-                            "name": POI.name!
-                          ]
-                        )
+                      Braze.getInstance(context).logCustomEvent(regionData.getString("eventname"),
+                        new BrazeProperties(new JSONObject()
+                            .put("identifier", poi.idStore)
+                            .put("name", poi.name)
+                    ));
                 }
             }
             catch (Exception ex){
