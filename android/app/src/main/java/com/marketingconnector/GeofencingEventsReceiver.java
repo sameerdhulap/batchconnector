@@ -28,12 +28,12 @@ public class GeofencingEventsReceiver extends BroadcastReceiver {
                 POI poi;
                 poi = WoosmapDb.getInstance(context).getPOIsDAO().getPOIbyStoreId(regionData.getString("identifier"));
                 if (poi != null){ //poi could be null if the entered/exited region is a custom region.
-//                    Add Your implementation here
-//                    Event with custom attributes
-//                    BatchEventAttributes attributes = new BatchEventAttributes()
-//                            .put("identifier", poi.idStore)
-//                            .put("name", poi.name);
-//                    Batch.Profile.trackEvent(regionData.getString("eventname"), attributes);
+
+                    Braze.logCustomEvent(regionData.getString("eventname"),
+                            new BrazeProperties(new JSONObject()
+                                    .put("identifier", poi.idStore)
+                                    .put("name", poi.name)
+                            ));
                 }
             }
             catch (Exception ex){
