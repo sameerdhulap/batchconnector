@@ -28,7 +28,7 @@ class GeofencingEventsReceiver: NSObject {
       if POIregion.didEnter {
         NSLog("didEnter")
         
-        // if you want only push to batch geofence event related to POI,
+        // if you want only push to Blaze geofence event related to POI,
         // check first if the POIregion.origin is equal to "POI"
         if POIregion.origin == "POI"
         {

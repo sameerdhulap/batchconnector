@@ -48,9 +48,9 @@ This is one way to run your app — you can also run it directly from within And
 
 ## Step 3: Integration
 
-### Batch Integration
+### Blaze Integration
 
-Follow the [Batch Implementation](https://doc.batch.com/react-native/sdk-integration/) guide in order to add Batch plugin to your project.
+Follow the [Blaze Implementation](https://www.braze.com/docs/developer_guide/platform_integration_guides/react_native/react_sdk_setup) guide in order to add Batch plugin to your project.
 
 ### Receiving Woosmap Geofencing Region events using iOS Notification
 
@@ -62,6 +62,7 @@ Follow the steps below in order to capture events of geofence SDK
 import Foundation
 import WoosmapGeofencing
 import react_native_plugin_geofencing
+import BrazeKit
 
 extension Notification.Name {
   static let updateRegions = Notification.Name("updateRegions")
@@ -88,12 +89,13 @@ class GeofencingEventsReceiver: NSObject {
           if let POI = POIs.getPOIbyIdStore(idstore: POIregion.identifier) as POI? {
             
             // Event with custom attributes
-            //                        BatchProfile.trackEvent(name: "woos_geofence_entered_event", attributes: BatchEventAttributes { data in
-            //                          // Custom attribute
-            //                          data.put(POI.idstore ?? "", forKey: "identifier")
-            //                          // Compatibility reserved key
-            //                          data.put(POI.name ?? "", forKey: "name")
-            //                        })
+            AppDelegate.braze?.logCustomEvent(
+                          name: "woos_geofence_entered_event",
+                          properties: [
+                            "identifier": POI.idstore!,
+                            "name": POI.name!
+                          ]
+                        )
           }
           else {
             // error: Related POI doesn't exist
@@ -110,9 +112,33 @@ class GeofencingEventsReceiver: NSObject {
 }
 ```
 
-2.  Update `AppDelegate.mm` as following
+2. update `Appdelegate.h` as following
+
+``` objective-c
+#import "BrazeReactBridge.h"
+
+@interface AppDelegate : RCTAppDelegate<UNUserNotificationCenterDelegate>
+@property (class, nonatomic, strong) Braze *braze;
+@end
+```
+
+3.  Update `AppDelegate.mm` as following
 
 ``` java
+
+#pragma mark - AppDelegate.braze
+
+static Braze *_braze = nil;
+
++ (Braze *)braze {
+  return _braze;
+}
+
++ (void)setBraze:(Braze *)braze {
+  _braze = braze;
+}
+
+#pragma mark - AppDelegate
 
 GeofencingEventsReceiver * objWoosmapReceiver;
 
@@ -207,12 +233,14 @@ public class GeofencingEventsReceiver extends BroadcastReceiver {
                 POI poi;
                 poi = WoosmapDb.getInstance(context).getPOIsDAO().getPOIbyStoreId(regionData.getString("identifier"));
                 if (poi != null){ //poi could be null if the entered/exited region is a custom region.
-//                    Add Your implementation here
-//                    Event with custom attributes
-//                    BatchEventAttributes attributes = new BatchEventAttributes()
-//                            .put("identifier", poi.idStore)
-//                            .put("name", poi.name);
-//                    Batch.Profile.trackEvent(regionData.getString("eventname"), attributes);
+                      // Add Your implementation here
+                      AppDelegate.braze?.logCustomEvent(
+                          name: "woos_geofence_entered_event",
+                          properties: [
+                            "identifier": POI.idstore!,
+                            "name": POI.name!
+                          ]
+                        )
                 }
             }
             catch (Exception ex){
