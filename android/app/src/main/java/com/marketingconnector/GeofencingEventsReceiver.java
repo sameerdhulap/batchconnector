@@ -1,5 +1,4 @@
 package com.marketingconnector;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +10,10 @@ import org.json.JSONObject;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import com.braze.*;
+import com.braze.models.outgoing.*;
+
 
 public class GeofencingEventsReceiver extends BroadcastReceiver {
     private static final String TAG = "GeofencingReceiver";
@@ -24,9 +27,8 @@ public class GeofencingEventsReceiver extends BroadcastReceiver {
                 // Fetch the POI from the db based on the identifier
                 POI poi;
                 poi = WoosmapDb.getInstance(context).getPOIsDAO().getPOIbyStoreId(regionData.getString("identifier"));
-                if (poi != null){ //poi could be null if the entered/exited region is a custom region.
-
-                    Braze.logCustomEvent(regionData.getString("eventname"),
+                if (poi != null){ //poi could be null if the entered/exited region is a custom region
+                    Braze.getInstance(context).logCustomEvent(regionData.getString("eventname"),
                             new BrazeProperties(new JSONObject()
                                     .put("identifier", poi.idStore)
                                     .put("name", poi.name)
