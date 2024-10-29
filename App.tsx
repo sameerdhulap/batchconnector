@@ -35,7 +35,7 @@ function App(): React.JSX.Element {
   };
 
   const woosmapSettings = {
-    privateKeyWoosmapAPI: Platform.OS === 'ios' ? '653ce5d0-7019-48bc-a0d9-4353d5999a89' : '157c16cd-fc0e-46d9-8c40-f80953a9cbf7',
+    privateKeyWoosmapAPI: Platform.OS === 'ios' ? '<<iOS private key>>' : '<<android private key>>',
     trackingProfile: 'passiveTracking',
   };
 

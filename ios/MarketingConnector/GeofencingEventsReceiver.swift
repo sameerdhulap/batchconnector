@@ -2,7 +2,7 @@
 //  Woosmap.swift
 //  MarketingConnector
 //
-//  Created by WGS on 08/10/24.
+//  Created by Woosmap on 08/10/24.
 //
 
 import Foundation
